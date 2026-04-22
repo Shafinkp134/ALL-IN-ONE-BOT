@@ -1,0 +1,17 @@
+{
+  "name": "discord-ticket-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone Discord ticket bot with slash commands, buttons, and transcript logging.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node --check src/index.js",
+    "dashboard": "node dashboard/server.js",
+    "dashboard:check": "node --check dashboard/server.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.21.0",
+    "dotenv": "^16.4.5"
+  }
+}

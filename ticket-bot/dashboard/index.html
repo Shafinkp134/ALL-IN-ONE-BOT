@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ticket Tool Dashboard</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>🎫 TicketTool Dashboard</h1>
+      <p>Configure your Discord ticket bot categories and generate your <code>.env</code> instantly.</p>
+
+      <form id="config-form" class="grid">
+        <label>Discord Token <input id="token" type="password" placeholder="DISCORD_TOKEN" /></label>
+        <label>Client ID <input id="clientId" type="text" placeholder="DISCORD_CLIENT_ID" /></label>
+        <label>Guild ID <input id="guildId" type="text" value="1468448626169745478" /></label>
+        <label>Support Role ID <input id="supportRoleId" type="text" placeholder="SUPPORT_ROLE_ID" /></label>
+        <label>FRP Category ID <input id="frpCategoryId" type="text" value="1495469385853173952" /></label>
+        <label>VIP Category ID <input id="vipCategoryId" type="text" value="1493158192266608731" /></label>
+        <label>Gang Apply Category ID <input id="gangCategoryId" type="text" value="1495443479260827738" /></label>
+        <label>Faction Apply Category ID <input id="factionCategoryId" type="text" value="1493158395191234611" /></label>
+        <label>Transcript Channel ID <input id="transcriptChannelId" type="text" placeholder="TRANSCRIPT_CHANNEL_ID" /></label>
+      </form>
+
+      <div class="actions">
+        <button id="saveBtn" type="button">Save Local</button>
+        <button id="envBtn" type="button">Generate .env</button>
+        <button id="copyBtn" type="button">Copy .env</button>
+      </div>
+
+      <textarea id="envOutput" rows="12" readonly></textarea>
+    </section>
+
+    <section class="card preview">
+      <h2>Ticket Panel Preview</h2>
+      <p>How your panel options will appear in Discord:</p>
+      <div class="panel">
+        <button class="ticket frp">🛟 FRP Ticket</button>
+        <button class="ticket vip">💎 VIP Ticket</button>
+        <button class="ticket gang">📝 Gang Apply Ticket</button>
+        <button class="ticket faction">🏴 Faction Apply Ticket</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

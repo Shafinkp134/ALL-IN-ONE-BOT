@@ -1,0 +1,53 @@
+:root {
+  --bg: #0b1020;
+  --card: #111932;
+  --text: #e6ecff;
+  --muted: #a7b3d4;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(160deg, #090d1b, #111932);
+  color: var(--text);
+}
+.container {
+  max-width: 1100px;
+  margin: 24px auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding: 0 16px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid #25345f;
+  border-radius: 14px;
+  padding: 18px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+input, textarea, button {
+  border-radius: 10px;
+  border: 1px solid #344a86;
+  background: #0b1329;
+  color: var(--text);
+  padding: 10px;
+}
+textarea { width: 100%; margin-top: 10px; }
+.actions { display: flex; gap: 10px; margin-top: 12px; }
+button { cursor: pointer; }
+.panel { display: grid; gap: 10px; margin-top: 8px; }
+.ticket { text-align: left; }
+.frp { background: #1f2f61; }
+.vip { background: #27472f; }
+.gang { background: #41435f; }
+.faction { background: #473060; }
+@media (max-width: 920px) {
+  .container { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; }
+}
