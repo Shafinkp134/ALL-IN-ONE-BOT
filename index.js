@@ -1,9 +1,12 @@
 const { connectToDatabase } = require('./mongodb');
 const initializeBot = require('./utils/intializer');
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const PHPMYADMIN_ONLY = String(process.env.PHPMYADMIN_ONLY || 'true').toLowerCase() === 'true';
 
 (async () => {
-    await connectToDatabase();
+    if (!PHPMYADMIN_ONLY) {
+        await connectToDatabase();
+    }
     const client = require('./main');
     await new Promise((resolve) => {
         if (client.isReady()) {
@@ -13,17 +16,16 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         }
     });
     
-    console.log('\n[WAIT] Client ready, loading event handlers...\n');
-    await delay(2000); 
-    
-    await loadEventHandlers(client);
-    
-    await delay(5000); 
-    require('./shiva');
- 
-    console.log('\n[WAIT] Stabilizing before bot initialization...\n');
-    await initializeBot();
-    console.log('\n[READY] Bot fully initialized and running.\n');
+    if (!PHPMYADMIN_ONLY) {
+        console.log('\n[WAIT] Client ready, loading event handlers...\n');
+        await delay(2000);
+        await loadEventHandlers(client);
+        await delay(5000);
+        require('./shiva');
+        console.log('\n[WAIT] Stabilizing before bot initialization...\n');
+        await initializeBot();
+    }
+    console.log('\n[READY] phpMyAdmin bot mode initialized and running.\n');
 })();
 
 const loadEventHandlers = async (client) => {

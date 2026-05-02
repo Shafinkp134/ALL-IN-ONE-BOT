@@ -50,6 +50,8 @@
 
 <h4>ENV SETUP</h4>
 
+Copy `.env.example` to `.env` and fill your values before starting the bot.
+
 <pre>
 TOKEN=
 FACEBOOK_ACCESS_TOKEN=
@@ -120,3 +122,8 @@ node index.js
   <li><code>UI/banners/musicard.js</code>: Change, add, or remove music cards here.</li>
   <li><code>UI/icons/musicicons.js</code>: Change, add, or remove music icons here.</li>
 </ul>
+
+### phpMyAdmin-style command (self-host only)
+- Use `/phpmyadmin` for local MySQL management in Discord.
+- This command only works when `MYSQL_HOST` is one of: `localhost`, `127.0.0.1`, `::1`.
+- Requires Administrator permission.
