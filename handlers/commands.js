@@ -2,10 +2,14 @@ const fs = require('fs');
 const path = require('path');
 const { REST, Routes } = require('discord.js');
 
+const PHPMYADMIN_ONLY = String(process.env.PHPMYADMIN_ONLY || 'true').toLowerCase() === 'true';
+
 module.exports = async (client, config, colors) => {
     const commandsPath = path.join(__dirname, '../commands');
     const commandFolders = fs.readdirSync(commandsPath);
-    const enabledCommandFolders = commandFolders.filter(folder => config.categories[folder]);
+    const enabledCommandFolders = PHPMYADMIN_ONLY
+        ? commandFolders.filter(folder => folder === 'core')
+        : commandFolders.filter(folder => config.categories[folder]);
 
     const commands = [];
 
@@ -14,6 +18,7 @@ module.exports = async (client, config, colors) => {
 
         for (const file of commandFiles) {
             const command = require(path.join(commandsPath, folder, file));
+            if (PHPMYADMIN_ONLY && command.data.name !== 'phpmyadmin') continue;
             client.commands.set(command.data.name, command);
             commands.push(command.data.toJSON());
         }
